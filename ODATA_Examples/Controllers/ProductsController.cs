@@ -19,5 +19,15 @@ namespace ODATA_Examples.Controllers
         {
             return context.Products;
         }
+        public  IHttpActionResult  GetName([FromODataUri] int key)
+        {
+            var pro = context.Products.Find(key);
+            if (pro==null)
+            {
+                return NotFound();
+            }
+            return Ok(pro.Name);
+        }
+
     }
 }
